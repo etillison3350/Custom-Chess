@@ -1,17 +1,26 @@
 package chess;
 
-import javax.swing.JFrame;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.plaf.metal.MetalLookAndFeel;
 
-import chess.window.Board;
+import chess.game.Game;
+import chess.window.Window;
 
 public class Main {
 
+	public static Game game;
+	public static Window window;
+
 	public static void main(final String[] args) {
-		final JFrame frame = new JFrame();
-		frame.setSize(640, 480);
-		frame.setDefaultCloseOperation(3);
-		frame.add(new Board());
-		frame.setVisible(true);
+		try {
+			UIManager.setLookAndFeel(new MetalLookAndFeel());
+		} catch (final UnsupportedLookAndFeelException e) {}
+
+		game = new Game();
+
+		window = new Window();
+		window.setVisible(true);
 	}
 
 }

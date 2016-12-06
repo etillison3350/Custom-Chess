@@ -17,9 +17,7 @@ import javax.swing.JComponent;
 
 public class Board extends JComponent {
 
-	public static final double SQRT_3 = 1.7320508076;
-
-	private double scale, dx, dy;
+	public static final double SQRT_3 = 1.73205080756887719317660412344;
 
 	public Board() {
 		addComponentListener(new ComponentAdapter() {
@@ -45,6 +43,8 @@ public class Board extends JComponent {
 	private final int board = 1;
 	private final Set<Point> missing = new HashSet<>();
 
+	private double scale, dx, dy;
+
 	public void update() {
 		polygons = new HashSet<>();
 		xmin = ymin = Integer.MAX_VALUE;
@@ -66,7 +66,10 @@ public class Board extends JComponent {
 
 						final Cell c = new Cell(new double[] {p00.getX(), p10.getX(), p11.getX(), p01.getX()}, new double[] {p00.getY(), p10.getY(), p11.getY(), p01.getY()}, 4);
 						c.color = (x + y) % 2 == 0 ? new Color(128, 64, 32) : new Color(255, 192, 128);
+						c.centerX = (x + 0.5) * cos - (y + 0.5) * sin;
+						c.centerY = (x + 0.5) * sin + (y + 0.5) * cos;
 						polygons.add(c);
+
 						for (final double px : c.xpoints) {
 							if (px < xmin) xmin = px;
 							if (px > xmax) xmax = px;
@@ -98,6 +101,7 @@ public class Board extends JComponent {
 						c.centerX = x * cos - y * sin;
 						c.centerY = x * sin + y * cos;
 						polygons.add(c);
+
 						for (final double px : c.xpoints) {
 							if (px < xmin) xmin = px;
 							if (px > xmax) xmax = px;

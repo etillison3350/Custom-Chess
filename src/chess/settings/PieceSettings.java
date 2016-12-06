@@ -2,17 +2,17 @@ package chess.settings;
 
 import java.awt.Point;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class PieceSettings {
 
-	public byte controller;
-	public byte color;
-	public List<Character> symbols;
-	public List<List<MoveSettings>> moves;
+	public Map<Byte, List<Character>> symbols;
+	public Set<List<MoveSettings>> moves;
 	public byte respawn;
 	public byte royal;
 	public boolean forcedCapture;
-	public List<Point> hill;
+	public Set<Point> hill;
 	public boolean mustExitHill;
 
 }
