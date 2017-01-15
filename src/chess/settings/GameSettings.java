@@ -19,7 +19,7 @@ public class GameSettings {
 	public short boardRotation = 0;
 	// TODO implement infinite boards
 	public byte players = 2;
-	public byte boards = 10;
+	public byte boards = 1;
 	public boolean validationOn = true;
 	public final Set<Line> lines = new HashSet<>();
 	public final Map<Point, Byte> specialColors = new HashMap<>();
